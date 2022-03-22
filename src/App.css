@@ -1,0 +1,20 @@
+.sidebar {
+  width: calc(20vw - 5px);
+  margin-left: 5px;
+  height: calc(100vh - 10px);
+  position: fixed;
+}
+
+.star {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.star-disabled {
+  filter: grayscale(100%);
+}
+
+.rating {
+  font-weight: 700;
+}
