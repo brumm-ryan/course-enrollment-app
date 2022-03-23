@@ -52,7 +52,7 @@ class SectionSidebar extends React.Component {
     return (
       <Card className="sidebarRight">
         <Card.Body>
-          <Card.Title>Subsections</Card.Title>
+          <Card.Title><h3>Subsections</h3></Card.Title>
           <div id="accord">{this.buildAccord()}</div>
         </Card.Body>
       </Card>

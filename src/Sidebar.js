@@ -67,7 +67,7 @@ class Sidebar extends React.Component {
     return (
       <Card className="sidebar">
         <Card.Body>
-          <Card.Title>Search and Filter</Card.Title>
+          <Card.Title><h3>Search and Filter</h3></Card.Title>
           <Form>
             <Form.Group
               controlId="formKeywords"

@@ -5,7 +5,7 @@ import Tab from "react-bootstrap/Tab";
 import Sidebar from "./Sidebar";
 import CourseArea from "./CourseArea";
 import SectionSidebar from "./SectionSidebar";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, NavLink, Row } from "react-bootstrap";
 
 /**
  * The main application component.
@@ -154,11 +154,14 @@ class App extends React.Component {
             position: "fixed",
             zIndex: 1,
             width: "100%",
-            backgroundColor: "white",
+            color:"black",
+            fontWeight:"bolder"
+            
+            
           }}
         >
           {/* Search Tab */}
-          <Tab eventKey="search" title="Search" style={{ paddingTop: "5vh" }}>
+          <Tab eventKey="search" title="Search" style={{ paddingTop: "5vh"}}>
             <Sidebar
               setCourses={(courses) => this.setCourses(courses)}
               courses={this.state.allCourses}
@@ -186,7 +189,7 @@ class App extends React.Component {
           </Tab>
 
           {/* Cart Tab */}
-          <Tab eventKey="cart" title="Cart" style={{ paddingTop: "5vh" }}>
+          <Tab eventKey="cart" title="Cart" style={{ paddingTop: "5vh"}}>
             <div style={{ marginLeft: "5vw" }}>
               <CourseArea
                 data={this.state.filteredCourses}

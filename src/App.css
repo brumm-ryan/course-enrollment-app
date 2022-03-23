@@ -3,6 +3,13 @@
   margin-left: 5px;
   height: calc(100vh - 10px);
   position: fixed;
+  font-size: large;
+  font-weight: 700;
+  font-family:sans-serif;
+}
+
+.nav-tabs {
+  background-color: rgba(69, 66, 255, 0.452);
 }
 
 .sidebarRight {
@@ -11,6 +18,10 @@
   height: calc(100vh - 10px);
   right: 5px;
   position: fixed;
+  text-align: center;
+  font-size:medium;
+  font-weight: 400;
+  font-family:sans-serif;
 }
 
 .star {

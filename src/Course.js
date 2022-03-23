@@ -7,6 +7,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Accordion from "react-bootstrap/Accordion";
+import { width } from "dom-helpers";
 
 class Course extends React.Component {
   constructor(props) {
@@ -50,15 +51,16 @@ class Course extends React.Component {
 
     let buttonOnClick = () => this.addCourse(course);
     let buttonText = "Add Course";
-
+    let cn = true;
     if (cartCourses.some((c) => c.number === course.number)) {
       buttonOnClick = () => this.removeCourse(course);
       buttonText = "Remove Course";
+      cn = false;
     }
 
     return (
       <div>
-      <Button className="me-1" variant="secondary" onClick={buttonOnClick}>
+      <Button style={ cn ? { backgroundColor: "baf1f5"} : {backgroundColor: "red"}} onClick={buttonOnClick}>
         {buttonText}
       </Button>
       <div>{this.getGoToCartButton()}</div>
@@ -72,7 +74,7 @@ class Course extends React.Component {
 
     if (cartCourses.some((c) => c.number === course.number)) {
       return(
-        <Button className="me-1" variant="secondary" onClick={this.props.cartCallback}>Go To Cart</Button>
+        <Button style={{fill:"#baf1f5"}} onClick={this.props.cartCallback}>Go To Cart</Button>
       )
     } else {
       return;
@@ -87,7 +89,7 @@ class Course extends React.Component {
 
     return (
       <Button
-        variant="outline-dark"
+        style={{fill:"#baf1f5"}}
         onClick={buttonOnClick}
       >
         {buttonText}
@@ -169,7 +171,7 @@ class Course extends React.Component {
 
         {/* Completed courses do not have sections/subsections */}
         {!this.props.ratingMode && (
-          <Button className="mt-2" variant="dark" onClick={() => this.props.selectCourse(this.props.data.sections)}>
+          <Button backgroundColor={"#baf1f5"} onClick={() => this.props.selectCourse(this.props.data.sections)}>
             View sections and subsections
           </Button>
         )}
