@@ -21,9 +21,9 @@ class App extends React.Component {
       completedCourses: [], // The list of completed courses.
       cartCourses: [], // The list of courses in the cart.
       selectedCourse: [], //course that is being viewed for subsections;
+      activeTab: "search"
     };
   }
-
 
   /**
    * When the component mounts, fetch the classes data from the server.
@@ -61,6 +61,10 @@ class App extends React.Component {
       .catch((err) => console.log(err));
   }
 
+  tabsCallback(eventKey, event) {
+    this.setState({"activeTab": eventKey});
+  }
+
   // Callback function that adds a new course to the cartCourses state
   addCartCourse = (course) => {
     // Duplicate check
@@ -76,6 +80,11 @@ class App extends React.Component {
       });
     }
   };
+
+  goToCartCallback() {
+    this.setState({"activeTab" : "cart"});
+    return
+  }
 
   // Callback function that removes a course from the cartCourses state
   removeCartCourse(course) {
@@ -131,6 +140,7 @@ class App extends React.Component {
     // Set the courses to be displayed in the CourseArea under Search tab.
     // Refer to the Sidebar component (Sidebar.js) to understand when this is used.
     this.setState({ filteredCourses: courses });
+    this.setState({activeTab: "cart"});
   }
 
   render() {
@@ -138,6 +148,8 @@ class App extends React.Component {
       <>
         <Tabs
           defaultActiveKey="search"
+          activeKey = {this.state.activeTab ? this.state.activeTab : this.defaultActiveKey} 
+          onSelect = {(event, ev) => this.tabsCallback(event, ev)}
           style={{
             position: "fixed",
             zIndex: 1,
@@ -162,6 +174,7 @@ class App extends React.Component {
                 addCartCourse={this.addCartCourse.bind(this)}
                 removeCartCourse={this.removeCartCourse.bind(this)}
                 selectCourse={this.setViewingCourse.bind(this)}
+                goToCart={this.goToCartCallback.bind(this)}
               />
             </Col>
             <Col md="4">

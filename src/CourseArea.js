@@ -44,6 +44,7 @@ class CourseArea extends React.Component {
             addCartCourse={this.props.addCartCourse}
             removeCartCourse={this.props.removeCartCourse}
             selectCourse={this.props.selectCourse}
+            cartCallback={this.props.goToCart}
           />
         ));
       }

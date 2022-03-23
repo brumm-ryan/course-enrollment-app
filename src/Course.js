@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./App.css";
 import Section from "./Section";
+import App from "./App";
 import StarRating from "./StarRating";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -35,16 +36,6 @@ class Course extends React.Component {
     return sections;
   }
 
-  openModal() {
-    // Open the modal that shows sections and subsections
-    this.setState({ showModal: true });
-  }
-
-  closeModal() {
-    // Close the modal that shows sections and subsections
-    this.setState({ showModal: false });
-  }
-
   setExpanded(value) {
     // Sets the expanded state of the course
     this.setState({ expanded: value });
@@ -66,10 +57,27 @@ class Course extends React.Component {
     }
 
     return (
+      <div>
       <Button className="me-1" variant="secondary" onClick={buttonOnClick}>
         {buttonText}
       </Button>
+      <div>{this.getGoToCartButton()}</div>
+      </div>
     );
+  }
+
+  getGoToCartButton() {
+    let cartCourses = this.props.cartCourses;
+    let course = this.props.data;
+
+    if (cartCourses.some((c) => c.number === course.number)) {
+      return(
+        <Button className="me-1" variant="secondary" onClick={this.props.cartCallback}>Go To Cart</Button>
+      )
+    } else {
+      return;
+    }
+
   }
 
   getExpansionButton() {
@@ -169,26 +177,6 @@ class Course extends React.Component {
         {/* Star ratings are only shown when it's rendered under Completed Courses tab */}
         {this.showStarRating()}
 
-        {/* Modal that shows sections and subsections */}
-        <Modal
-          show={this.state.showModal}
-          onHide={() => this.closeModal()}
-          centered
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>{this.props.data.name}</Modal.Title>
-          </Modal.Header>
-
-          <Accordion defaultActiveKey={this.props.data.sections[0].number}>
-            {this.getSections()}
-          </Accordion>
-
-          <Modal.Footer>
-            <Button variant="secondary" onClick={() => this.closeModal()}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
       </Card>
     );
   }
