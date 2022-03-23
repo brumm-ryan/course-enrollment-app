@@ -4,6 +4,8 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import Sidebar from "./Sidebar";
 import CourseArea from "./CourseArea";
+import SectionSidebar from "./SectionSidebar";
+import { Col, Container, Row } from "react-bootstrap";
 
 /**
  * The main application component.
@@ -18,6 +20,7 @@ class App extends React.Component {
       subjects: [], // The list of unique subjects fetched from the server.
       completedCourses: [], // The list of completed courses.
       cartCourses: [], // The list of courses in the cart.
+      selectedCourse: [], //course that is being viewed for subsections;
     };
   }
 
@@ -98,6 +101,10 @@ class App extends React.Component {
     return subjects;
   }
 
+  setViewingCourse(course) {
+    this.setState({selectedCourse: course});
+  }
+
   // Callback function that sets the rating of a course
   setRating(courseNumber, rating) {
     this.setState({
@@ -145,15 +152,24 @@ class App extends React.Component {
               courses={this.state.allCourses}
               subjects={this.state.subjects}
             />
-            <div style={{ marginLeft: "20vw" }}>
+            <Container style={{ marginLeft: "20vw"}}>
+            <Row>
+            <Col md="8">
               <CourseArea
                 data={this.state.filteredCourses}
                 allData={this.state.allCourses}
                 cartCourses={this.state.cartCourses}
                 addCartCourse={this.addCartCourse.bind(this)}
                 removeCartCourse={this.removeCartCourse.bind(this)}
+                selectCourse={this.setViewingCourse.bind(this)}
               />
-            </div>
+            </Col>
+            <Col md="4">
+              <SectionSidebar
+              sections={this.state.selectedCourse}/>
+            </Col>
+            </Row>
+            </Container>  
           </Tab>
 
           {/* Cart Tab */}

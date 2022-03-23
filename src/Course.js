@@ -136,7 +136,7 @@ class Course extends React.Component {
     let description = this.props.data.description;
 
     return (
-      <Card className="col-6 mb-2 p-2">
+      <Card style={{marginBottom: 15, maxWidth: 800}}>
         <Card.Title className="d-flex justify-content-between">
           {name} 
           <div>
@@ -161,7 +161,7 @@ class Course extends React.Component {
 
         {/* Completed courses do not have sections/subsections */}
         {!this.props.ratingMode && (
-          <Button className="mt-2" variant="dark" onClick={() => this.openModal()}>
+          <Button className="mt-2" variant="dark" onClick={() => this.props.selectCourse(this.props.data.sections)}>
             View sections and subsections
           </Button>
         )}
