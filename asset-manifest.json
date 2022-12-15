@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/course-enrollment-app/static/css/main.56607675.css",
+    "main.js": "/course-enrollment-app/static/js/main.0cf6b3ec.js",
+    "static/js/787.3f83dd19.chunk.js": "/course-enrollment-app/static/js/787.3f83dd19.chunk.js",
+    "index.html": "/course-enrollment-app/index.html",
+    "main.56607675.css.map": "/course-enrollment-app/static/css/main.56607675.css.map",
+    "main.0cf6b3ec.js.map": "/course-enrollment-app/static/js/main.0cf6b3ec.js.map",
+    "787.3f83dd19.chunk.js.map": "/course-enrollment-app/static/js/787.3f83dd19.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.56607675.css",
+    "static/js/main.0cf6b3ec.js"
+  ]
+}
