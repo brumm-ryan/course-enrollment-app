@@ -14,7 +14,7 @@ class Course extends React.Component {
     super(props);
     this.state = {
       expanded: false, // whether the course is expanded (i.e. description is shown) or not
-      showModal: false, // whether to display the modal that shows sections and subsections
+      showModal: false, // whether to display the modal that shows sections and subsection
     };
   }
 
@@ -49,21 +49,26 @@ class Course extends React.Component {
     let cartCourses = this.props.cartCourses;
     let course = this.props.data;
 
-    let buttonOnClick = () => this.addCourse(course);
-    let buttonText = "Add Course";
-    let cn = true;
-    if (cartCourses.some((c) => c.number === course.number)) {
-      buttonOnClick = () => this.removeCourse(course);
-      buttonText = "Remove Course";
-      cn = false;
-    }
+    let inCart = (cartCourses.some((c) => c.number === course.number))
+    let buttonText = inCart ? "Remove Course" : "Add Course";
+
+    const handleClick = event => {
+      if (cartCourses.some((c) => c.number === course.number)) {
+        event.currentTarget.style.backgroundColor = '#0d6efd';
+        this.removeCourse(course);
+      } else {
+        event.currentTarget.style.backgroundColor = "red"
+        this.addCourse(course);
+      }
+    };
+
 
     return (
       <div>
-      <Button style={ cn ? { backgroundColor: "baf1f5"} : {backgroundColor: "red"}} onClick={buttonOnClick}>
+        {this.getGoToCartButton()}
+      <Button onClick={handleClick}>
         {buttonText}
       </Button>
-      <div>{this.getGoToCartButton()}</div>
       </div>
     );
   }
