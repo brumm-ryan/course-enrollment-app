@@ -9,16 +9,21 @@ class CourseArea extends React.Component {
     if (this.props.mode === "cart") {
       // If the mode is cart, then we want to display the courses in the compact view.
       // They should also allow the user to remove the course from the cart.
-      courses = this.props.cartCourses.map((course) => (
-        <Course
-          key={course.number}
-          data={course}
-          compactView={true}
-          cartCourses={this.props.cartCourses}
-          addCartCourse={this.props.addCartCourse}
-          removeCartCourse={(data) => this.props.removeCartCourse(data)}
-        />
-      ));
+      if(this.props.cartCourses.length > 0) {
+        courses = this.props.cartCourses.map((course) => (
+            <Course
+                key={course.number}
+                data={course}
+                compactView={true}
+                cartCourses={this.props.cartCourses}
+                addCartCourse={this.props.addCartCourse}
+                removeCartCourse={(data) => this.props.removeCartCourse(data)}
+            />
+        ));
+      } else {
+        return <div><div style={{ display:"flex", justifyContent:"center", alignItems:"center"}}>There are no courses in your cart.</div>
+        </div>
+      }
     } else {
       // If the mode is completed courses, then we want to display the courses in the compact view.
       // Completed courses should allow the user to give the course a rating.

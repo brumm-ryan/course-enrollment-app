@@ -140,7 +140,7 @@ class App extends React.Component {
     // Set the courses to be displayed in the CourseArea under Search tab.
     // Refer to the Sidebar component (Sidebar.js) to understand when this is used.
     this.setState({ filteredCourses: courses });
-    this.setState({activeTab: "cart"});
+    // this.setState({activeTab: "cart"});
   }
 
   render() {
