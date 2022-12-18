@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/course-enrollment-app/static/css/main.f3101eb8.css",
-    "main.js": "/course-enrollment-app/static/js/main.521a60d8.js",
+    "main.js": "/course-enrollment-app/static/js/main.6da619f4.js",
     "static/js/787.3f83dd19.chunk.js": "/course-enrollment-app/static/js/787.3f83dd19.chunk.js",
     "index.html": "/course-enrollment-app/index.html",
     "main.f3101eb8.css.map": "/course-enrollment-app/static/css/main.f3101eb8.css.map",
-    "main.521a60d8.js.map": "/course-enrollment-app/static/js/main.521a60d8.js.map",
+    "main.6da619f4.js.map": "/course-enrollment-app/static/js/main.6da619f4.js.map",
     "787.3f83dd19.chunk.js.map": "/course-enrollment-app/static/js/787.3f83dd19.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f3101eb8.css",
-    "static/js/main.521a60d8.js"
+    "static/js/main.6da619f4.js"
   ]
 }
